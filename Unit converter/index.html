@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>UnitXpert - Smart Unit Converter</title>
+
+  <!-- FontAwesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header">
+    <h1 id="mainTitle">UnitXpert</h1>
+    <div class="top-controls" role="region" aria-label="Settings and Preferences">
+      <div class="language-container">
+        <label for="languageSelect" class="language-label">Language:</label>
+        <select id="languageSelect" aria-label="Select Language">
+          <option value="en" selected>English</option>
+          <option value="hi">हिन्दी</option>
+          <option value="bn">বাংলা</option>
+          <option value="ta">தமிழ்</option>
+          <option value="kn">ಕನ್ನಡ</option>
+        </select>
+      </div>
+
+      <button id="themeToggle" title="Toggle Theme" aria-label="Toggle Theme">
+        <i class="fas fa-moon"></i>
+      </button>
+    </div>
+  </header>
+
+  <main class="container" role="main">
+    <section class="conversion-section" aria-label="Unit Conversion">
+      <form id="converterForm" onsubmit="return false;">
+        <div class="form-group">
+          <label id="labelType" for="type">Conversion Type</label>
+          <select id="type" aria-labelledby="labelType">
+            <option value="length">Length</option>
+            <option value="weight">Weight</option>
+            <option value="temperature">Temperature</option>
+            <option value="volume">Volume</option>
+            <option value="speed">Speed</option>
+            <option value="area">Area</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label id="labelValue" for="inputValue">Enter Value</label>
+          <input id="inputValue" type="number" inputmode="decimal" aria-labelledby="labelValue"
+                 placeholder="Enter value" required autocomplete="off" step="any" />
+        </div>
+
+        <div class="units-row">
+          <div class="form-group unit-select">
+            <label id="labelFrom" for="fromUnit">From</label>
+            <select id="fromUnit" aria-labelledby="labelFrom"></select>
+          </div>
+
+          <button type="button" id="swapBtn" title="Swap Units" aria-label="Swap From and To units">
+            <i class="fas fa-exchange-alt"></i>
+          </button>
+
+          <div class="form-group unit-select">
+            <label id="labelTo" for="toUnit">To</label>
+            <select id="toUnit" aria-labelledby="labelTo"></select>
+          </div>
+        </div>
+
+        <button type="submit" id="convertBtn" aria-label="Convert units">
+          <i class="fas fa-calculator"></i> Convert
+        </button>
+      </form>
+
+      <div id="result" class="result-box" aria-live="polite" aria-atomic="true"></div>
+    </section>
+
+    <section class="history-section" aria-label="Conversion History">
+      <h2 id="historyTitle">Conversion History</h2>
+      <ul id="historyList" class="history-list" role="list"></ul>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
